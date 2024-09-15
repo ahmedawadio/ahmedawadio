@@ -17,7 +17,7 @@ export default function ExperienceSection() {
     <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
       <div className="text-6xl  lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
-      Work that I've done
+      Work that Ive done
         </div>
         <p className="text-lg  max-w-2xl  my-2 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
           From software development, to machine learning and data science modeling
