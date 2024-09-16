@@ -472,7 +472,7 @@ const items = [
     title: "GymSpott Co-Founder",
     description: (
       <span className="text-sm">
-       Built a fitness social network app using React/React Native, Figma, Azure, GCP, SQL, and Python
+       Built a fitness social network app using React/React Native, Figma, Azure, GCP, SQL, and Python. Recommendation model increased friend requests by 100%
       </span>
     ),
     header: <SkeletonFour />,
@@ -481,10 +481,10 @@ const items = [
   },
 
   {
-    title: "Predicting Porpulation at MetroStar",
+    title: "Predicting Populations at MetroStar",
     description: (
       <span className="text-sm">
-        Let AI handle the proofreading of your documents.
+        Created predictive population models for various U.S. cities with 99% accuracy 
       </span>
     ),
     header: <SkeletonTwo />,
@@ -516,7 +516,7 @@ const items = [
     icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "AI Drone Work at Dep of Defense NSIN",
+    title: "AI Drones at Dep of Defense NSIN",
     description: (
       <span className="text-sm">
         Developed AI model to analyze and interpred LiDAR data for drone assisted warfighter terrain navigation
