@@ -3,7 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-
+//           <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
+// Featured Project
+// </h4> 
 export const LampContainer = ({
   children,
   className,
@@ -12,13 +14,21 @@ export const LampContainer = ({
   className?: string;
 }) => {
   return (
+    <div>
+
+ 
     <div
       className={cn(
         "relative flex min-h-screen -mt-20  flex-col items-center justify-center overflow-hidden bg-zinc-950 w-full rounded-md z-0",
         className
       )}
     >
+        {/* <h4 className="text-6xl relative z-50 mx-auto text-centert font-medium  from-slate-300 to-slate-500 ">
+        Featured Project
+        </h4>  */}
+      
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 ">
+      
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "30rem" }}
@@ -82,5 +92,7 @@ export const LampContainer = ({
         {children}
       </div>
     </div>
+    </div>
+
   );
 };
