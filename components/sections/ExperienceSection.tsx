@@ -315,7 +315,7 @@ export const Globe = ({ className }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   let glowColor = useRef<[number, number, number]>([0.5, 0.5, 0.5]).current; // UseRef for glow color as a tuple
   let rotationSpeed = useRef(0.006).current; // UseRef to persist speed without triggering re-render
-  let mapBrightness = useRef(2).current; // UseRef for map brightness
+  // let mapBrightness = useRef(2).current; // UseRef for map brightness
   let theta = useRef(0).current; // Persist theta to keep it consistent
 
   useEffect(() => {
@@ -332,7 +332,7 @@ export const Globe = ({ className }: { className?: string }) => {
       dark: 1,
       diffuse: 1.2,
       mapSamples: 16000,
-      mapBrightness: mapBrightness,
+      mapBrightness: 2,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.1, 0.8, 1],
       glowColor: glowColor,
@@ -436,14 +436,14 @@ export const Globe = ({ className }: { className?: string }) => {
     return () => {
       globe.destroy();
     };
-  }, [glowColor]);
+  }, [glowColor,rotationSpeed]);
 
   return (
     <canvas
       ref={canvasRef}
       onMouseEnter={() => {
         rotationSpeed = 0.03; // Update rotation speed on hover
-        mapBrightness = 2; // Update map brightness on hover
+        // mapBrightness = 2; // Update map brightness on hover
         theta = theta; // Keep theta the same on hover
         glowColor =[0.1, 0.8, 1]; // Change glow color on hover
 
@@ -453,7 +453,7 @@ export const Globe = ({ className }: { className?: string }) => {
       }}
       onMouseLeave={() => {
         rotationSpeed = 0.006; // Update rotation speed on hover
-        mapBrightness = 2; // Update map brightness on hover
+        // mapBrightness = 2; // Update map brightness on hover
         theta = theta; // Keep theta the same on hover
         glowColor =[0.5, 0.5, 0.5]; // Change glow color on hover
         // setRotationSpeed(0.005); // Reset rotation speed after hover

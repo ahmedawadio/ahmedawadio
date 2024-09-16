@@ -2,6 +2,8 @@ import React from "react"
 import { FlipWords } from "../ui/flip-words"
 import { Spotlight } from "../ui/spotlight"
 import { BackgroundGradient } from "../ui/background-gradient";
+import { LuConstruction } from "react-icons/lu";
+import { FaExclamationTriangle } from "react-icons/fa";
 
 
 export default function first() {
@@ -24,11 +26,28 @@ export default function first() {
         
           Build<FlipWords words={words} /> <br />
           with Ahmed Awad
+         
         </div>
-
+       <StillUnderConstruction/>
         </div>
 
           </div>
     )
 }
+
+
+ function StillUnderConstruction() {
+
+  return(
+
+    <div className="flex ml-10 mt-8">
+    <div className="flex items-center border border-yellow-500 bg-yellow-200 bg-opacity-10 text-yellow-300 text-md font-semibold px-4 py-2 rounded-2xl">
+      {/* Exclamation Icon */}
+      <FaExclamationTriangle className="w-5 h-5 mr-2 text-yellow-300" />
+      {/* Text */}
+      Still Under Construction
+    </div>
+  </div>
+  )
+ }
 

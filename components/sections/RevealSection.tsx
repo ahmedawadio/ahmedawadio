@@ -200,26 +200,26 @@ export function ApolloProjectCard() {
         delay: 4, // Delay before starting
       }
 
-      const [scopeLeft, animate] = useAnimate();
-      const isInView = useInView(scopeLeft);
+      // const [scopeLeft, animate] = useAnimate();
+      // const isInView = useInView(scopeLeft);
       
-      useEffect(() => {
-        if (isInView) {
-          animate(
-            "span",
-            {
-              display: "inline-block",
-              opacity: 1,
-              width: "fit-content",
-            },
-            {
-              duration: 0.3,
-              delay: stagger(0.1),
-              ease: "easeInOut",
-            }
-          );
-        }
-      }, [isInView]);
+      // useEffect(() => {
+      //   if (isInView) {
+      //     animate(
+      //       "span",
+      //       {
+      //         display: "inline-block",
+      //         opacity: 1,
+      //         width: "fit-content",
+      //       },
+      //       {
+      //         duration: 0.3,
+      //         delay: stagger(0.1),
+      //         ease: "easeInOut",
+      //       }
+      //     );
+      //   }
+      // }, [isInView]);
       return (
         <div className="ml-3 my-2" style={{ display: 'flex', justifyContent: 'center', fontSize: '30px' }}>
           {/* Left heel without motion */}
