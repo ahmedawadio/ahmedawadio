@@ -442,7 +442,7 @@ export const Globe = ({ className }: { className?: string }) => {
     <canvas
       ref={canvasRef}
       onMouseEnter={() => {
-        rotationSpeed = 0.03; // Update rotation speed on hover
+        rotationSpeed = 0.02; // Update rotation speed on hover
         // mapBrightness = 2; // Update map brightness on hover
         theta = theta; // Keep theta the same on hover
         glowColor =[0.1, 0.8, 1]; // Change glow color on hover
