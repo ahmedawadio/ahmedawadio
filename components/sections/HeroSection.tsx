@@ -45,7 +45,7 @@ export default function first() {
       {/* Exclamation Icon */}
       <FaExclamationTriangle className="w-5 h-5 mr-2 text-yellow-300" />
       {/* Text */}
-      Still Under Construction
+      Still Under Construction (not built for mobile yet)
     </div>
   </div>
   )
