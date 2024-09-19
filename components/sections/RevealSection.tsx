@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { TextGradient } from "../ui/text-gradient";
+import { BentoGrid } from "../ui/bento-grid";
 
 
 
@@ -20,19 +21,27 @@ export default function RevealSection() {
     Featured Projects
 </div>
   
-        <LampContainer>
+  <div className="hidden md:grid">
+
+  </div>
+        <LampContainer >
         <motion.div
           initial={{ opacity: 0.5, y: 200 }}
           whileInView={{ opacity: 1, y: -20 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          className="flex flex-row items-center justify-center space-y- md:space-y-0 md:space-x-8"
+          className=" hidden md:grid flex flex-row items-center justify-center space-y- md:space-y-0 md:space-x-8"
           >
           {/* <div className="mr-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
             Featured <br /> Project
             </div>
    */}
+   <BentoGrid  className={cn(
+        "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto ",
+      )}>
+
           <ApolloProjectCard />
           <HomeProjectCard />
+   </BentoGrid>
 
         </motion.div>
       </LampContainer>
