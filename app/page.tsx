@@ -1,7 +1,7 @@
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import FooterSection from "@/components/sections/FooterSection";
 import HeroSection from "@/components/sections/HeroSection";
-import RevealSection from "@/components/sections/RevealSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function Home() {
       
     <HeroSection />       
     <ExperienceSection/>
-    <RevealSection/>
+    <ProjectsSection/>
     <FooterSection />
 
 

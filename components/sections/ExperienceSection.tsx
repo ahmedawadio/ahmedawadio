@@ -23,7 +23,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Area, Responsive
 
 export default function ExperienceSection() {
   return (
-    <div className="relative z-20 py-10 lg:py-40 max-w-8xl mx-auto">
+    <div id="experience" className="relative z-20 py-10 lg:py-10 max-w-8xl mx-auto">
       <div className="px-8">
         <div className="text-6xl  lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
           Experience

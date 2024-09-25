@@ -19,10 +19,11 @@ import { FaUserAlt } from "react-icons/fa";
 
 
 
-export default function RevealSection() {
+export default function ProjectsSection() {
 
     return(
-<div className="mt-5">
+<div id="projects" className="">
+  <div className=" h-5 x-5 my-5"/>
 
 <div id="<=md" className="flex flex-col items-center justify-center gap-8 mx-auto max-w-7xl lg:hidden">
   {/* Show only on medium screens and below */}

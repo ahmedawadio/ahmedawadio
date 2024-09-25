@@ -12,7 +12,7 @@ export default function first() {
 
 
     return( 
-      <div className="overflow-visible w-full h-full  ">
+      <div className="overflow-visible w-full h-full pb-40  ">
 
 
         <Spotlight className=" pl-50 ml-10 overflow-visible"/>
