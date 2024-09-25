@@ -115,7 +115,7 @@ export function ApolloProjectCard() {
  
             
           <p className="font-semibold max-w-5xl mx-auto text-left tracking-tight from-slate-300 to-slate-500 text-xl  md:text-2xl md:leading-snug">
-         Apollo Clinic GPT
+         Apollo Clinic GPTs
           </p>
            <div className="my-5">
            <BackgroundGradient className="flex items-center  h-full">
@@ -202,7 +202,7 @@ export function ApolloProjectCard() {
               </div>
 
               <div className=" sm:text-lg md:text-xl lg:text-xl font-bold text-start">
-                There's no place like home
+                There&apos;s no place like home
               </div>
 
               </BackgroundGradient>
