@@ -28,7 +28,7 @@ export default function first() {
           with Ahmed Awad
          
         </div>
-       <StillUnderConstruction/>
+       {/* <StillUnderConstruction/> */}
         </div>
 
           </div>
@@ -42,9 +42,7 @@ export default function first() {
 
     <div className="flex ml-10 mt-8">
     <div className="flex items-center border border-yellow-500 bg-yellow-200 bg-opacity-10 text-yellow-300 text-md font-semibold px-4 py-2 rounded-2xl">
-      {/* Exclamation Icon */}
       <FaExclamationTriangle className="w-5 h-5 mr-2 text-yellow-300" />
-      {/* Text */}
       Under Construction
     </div>
   </div>
