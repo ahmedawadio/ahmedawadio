@@ -8,7 +8,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 
 export default function first() {
 
-  const words = ["full stack apps","marketplaces", "ML models", "startups", "llm apps","mobile apps","social networks", "recommendation systems"];
+  const words = ["apps","APIs", "ML models", "startups",  ];
 
 
     return( 
@@ -22,7 +22,7 @@ export default function first() {
         <div className="
          bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text tracking-tight text-transparent md:text-7x
         
-        ml-10 mt-20 text-7xl md:text-7xl sm:text-6xl xs:text-2xl  mx-auto font-normal text-left text-neutral-200">
+        ml-10 mt-20 text-6xl md:text-7xl sm:text-6xl xs:text-2xl  mx-auto font-normal text-left text-neutral-200">
         
           Build<FlipWords words={words} /> <br />
           with Ahmed Awad
@@ -45,7 +45,7 @@ export default function first() {
       {/* Exclamation Icon */}
       <FaExclamationTriangle className="w-5 h-5 mr-2 text-yellow-300" />
       {/* Text */}
-      Still Under Construction (not built for mobile yet)
+      Under Construction
     </div>
   </div>
   )

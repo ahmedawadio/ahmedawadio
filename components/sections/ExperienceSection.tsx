@@ -17,35 +17,38 @@ import { FiCheckCircle } from "react-icons/fi";
 import { FiServer } from "react-icons/fi";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { EvervaultCard } from "../ui/evervault-card";
+import { Badge } from "../ui/badge";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Area, ResponsiveContainer } from 'recharts';
+
 
 export default function ExperienceSection() {
   return (
     <div className="relative z-20 py-10 lg:py-40 max-w-8xl mx-auto">
       <div className="px-8">
-      <div className="text-6xl  lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
-      Experience
+        <div className="text-6xl  lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
+          Experience
         </div>
         <p className="text-lg  max-w-2xl  my-2 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-          From software development, to machine learning and data science modeling
+          From software development, to machine learning and data science
+          modeling
         </p>
-    <BentoGrid className="mb-20 mt-10 max-w-8xl mx-auto md:auto-rows-[20rem]">
-      {items.map((item, i) => (
-        <BentoGridItem
-        key={i}
-        title={item.title}
-        description={item.description}
-        header={item.header}
-        className={cn("[&>p:text-xl]", item.className)}
-        // icon={item.icon}
-        />
-      ))}
-    </BentoGrid>
-    </div>
-
+        <BentoGrid className="mb-20 mt-10 max-w-8xl mx-auto auto-rows-[20rem]">
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              header={item.header}
+              className={cn("[&>p:text-xl]", item.className)}
+              // icon={item.icon}
+            />
+          ))}
+        </BentoGrid>
       </div>
+    </div>
   );
 }
- 
+
 const SkeletonOne = () => {
   const variants = {
     initial: {
@@ -72,12 +75,8 @@ const SkeletonOne = () => {
     },
   };
 
-  return(
+  return <EvervaultCard text="hover" />;
 
-    <EvervaultCard text="hover" />
-
-  )
- 
   // return (
   //   <motion.div
   //     initial="initial"
@@ -127,25 +126,105 @@ const SkeletonTwo = () => {
     },
   };
   const arr = new Array(6).fill(0);
-  return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-    >
-      {arr.map((_, i) => (
-        <motion.div
-          key={"skelenton-two" + i}
-          variants={variants}
-          style={{
-            maxWidth: Math.random() * (100 - 40) + 40 + "%",
-          }}
-          className="flex flex-row rounded-full border dark:border-white/[0.2] p-2  items-center space-x-2 bg-neutral-950 w-full h-4"
-        ></motion.div>
-      ))}
-    </motion.div>
-  );
+
+  const CustomChart = () => {
+    const data = [
+      { name: '1', uv: 1000, guess: null, confidenceLow: null, confidenceHigh: null },
+      { name: '2', uv: 2200, guess: null, confidenceLow: null, confidenceHigh: null },
+      { name: '3', uv: 2800, guess: null, confidenceLow: null, confidenceHigh: null },
+      { name: '4', uv: 3800, guess: 3800, confidenceLow: 3800 * 1, confidenceHigh: 3800 * 1 }, 
+      { name: '5', uv: null, guess: 4000, confidenceLow: 4000 * .8, confidenceHigh: 4000 * 1.2 },
+      { name: '6', uv: null, guess: 4800, confidenceLow: 4800 * .7, confidenceHigh: 4800 * 1.3 },
+      { name: '7', uv: null, guess: 5500, confidenceLow: 5500 * .6, confidenceHigh: 5500 * 1.4 },
+
+    
+    ];
+  
+    return (
+      <motion.div
+        initial={{ scale: 1, opacity: .8 }}
+        animate={{ scale: 1, opacity: .8 }}
+        whileHover={{ scale: 1.01, opacity: 1 }}
+        className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+      >
+        <ResponsiveContainer width="100%" height="100%" >
+
+        <LineChart width={400} height={200} data={data}>
+          {/* Confidence Interval Area */}
+          <Line
+            type="monotone"
+            dataKey="confidenceLow"
+            dot={false}
+            strokeWidth={2}
+            strokeDasharray="5 5"  // Creates the dashed effect
+
+            
+            // whileHover={() => console.log("hover")}
+            // onHover={() => console.log("hover")}
+            // stroke="none"
+            // fill="rgba(99, 255, 132, 0.2)"  // Light color for confidence shading
+            />
+          <Line
+            type="monotone"
+            dataKey="confidenceHigh"
+            dot={false}
+            strokeWidth={2}
+            strokeDasharray="5 5"  // Creates the dashed effect
+
+            // stroke="none"
+            // fill="rgba(99, 255, 132, 0.2)"  // Same color as confidenceLow for uniform shading
+            />
+  
+          {/* Dashed "Guess" Line */}
+          <Line
+            type="monotone"
+            dataKey="guess"
+            stroke="white"
+            strokeWidth={2}
+            strokeDasharray="5 5"  // Creates the dashed effect
+            dot={false}
+            />
+  
+          {/* Solid Line for UV (Actual Data) */}
+          <Line
+            type="monotone"
+            dataKey="uv"
+            stroke="white"
+            strokeWidth={2}
+            dot={false}
+            />
+        </LineChart>
+            </ResponsiveContainer>
+      </motion.div>
+    );
+  };
+  
+  
+  
+  
+    
+  return( 
+  <CustomChart/>
+)
+  // return (
+  //   <motion.div
+  //     initial="initial"
+  //     animate="animate"
+  //     whileHover="hover"
+  //     className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+  //   >
+  //     {arr.map((_, i) => (
+  //       <motion.div
+  //         key={"skelenton-two" + i}
+  //         variants={variants}
+  //         style={{
+  //           maxWidth: Math.random() * (100 - 40) + 40 + "%",
+  //         }}
+  //         className="flex flex-row rounded-full border dark:border-white/[0.2] p-2  items-center space-x-2 bg-neutral-950 w-full h-4"
+  //       ></motion.div>
+  //     ))}
+  //   </motion.div>
+  // );
 };
 const SkeletonThree = () => {
   const variants = {
@@ -207,9 +286,9 @@ const SkeletonFour = () => {
     >
       <motion.div
         variants={first}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
-      {/* <Image
+        {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
           alt="avatar"
           height="100"
@@ -217,16 +296,24 @@ const SkeletonFour = () => {
           className="rounded-full h-10 w-10"
         />
          */}
-        <MdDevices size={60} />
+        {/* <MdDevices size={60} /> */}
 
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-           Mobile/Web App
+        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <MdDevices className="h-full w-full" />
+        </div>
+
+        <p className="  sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+          Mobile/Web App
         </p>
-        <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        {/* <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
           React Native
-        </p>
+        </p> */}
+        {/* <Badge variant="secondary" className="mt-4">React Native </Badge> */}
       </motion.div>
-      <motion.div variants={first} className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
+      <motion.div
+        variants={first}
+        className="h-full relative z-20 w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+      >
         {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
           alt="avatar"
@@ -234,40 +321,48 @@ const SkeletonFour = () => {
           width="100"
           className="rounded-full h-10 w-10"
         /> */}
-        <FiCheckCircle size={50} />
+
+        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <FiCheckCircle className="h-full w-full" />
+        </div>
 
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Recommendation Model
+          ML Model
         </p>
-        <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        {/*  */}
+        {/* <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
           Machine Learning
-        </p>
+        </p> */}
+        {/* <Badge variant="secondary" className="mt-4">Full Stack</Badge> */}
       </motion.div>
       <motion.div
         variants={second}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
-    <FiServer size={50} />
+        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <FiServer className="h-full w-full" />
+        </div>
 
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Backend
         </p>
-        <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        {/* <p className=x"border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
           Azure/GCP
-        </p>
+        </p> */}
       </motion.div>
       <motion.div
         variants={second}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
-<LuLayoutDashboard size={50} />
-
+        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <LuLayoutDashboard className="h-full w-full" />
+        </div>
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Dashboard Analytics
+          Dashboard
         </p>
-        <p className="border border-blue-500 bg-blue-100 dark:bg-orange-900/20 text-blue-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        {/* <p className="border border-blue-500 bg-blue-100 dark:bg-orange-900/20 text-blue-600 text-xs rounded-full px-2 py-0.5 mt-4">
           Analytics
-        </p>
+        </p> */}
       </motion.div>
     </motion.div>
   );
@@ -297,16 +392,16 @@ const SkeletonFive = () => {
       },
     },
   };
- 
+
   return (
     <motion.div
-    initial="initial"
-    whileHover="animate"
-    className="flex overflow-hidden flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+      initial="initial"
+      whileHover="animate"
+      className="flex overflow-hidden sm:aspect-video  xs:aspect-video flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
     >
-
-      <Globe className=" -right-5 md:-right-10 -bottom-90 md:-bottom-82" />
-       
+      <div className="flex items-center justify-center">
+        <Globe className="" />
+      </div>
     </motion.div>
   );
 };
@@ -315,7 +410,6 @@ export const Globe = ({ className }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   let glowColor = useRef<[number, number, number]>([0.5, 0.5, 0.5]).current; // UseRef for glow color as a tuple
   let rotationSpeed = useRef(0.006).current; // UseRef to persist speed without triggering re-render
-  // let mapBrightness = useRef(2).current; // UseRef for map brightness
   let theta = useRef(0).current; // Persist theta to keep it consistent
 
   useEffect(() => {
@@ -325,8 +419,8 @@ export const Globe = ({ className }: { className?: string }) => {
 
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 1,
-      width: 300 * 2,
-      height: 300 * 2,
+      width: 500 * 2,
+      height: 500 * 2,
       phi: 0,
       theta: theta,
       dark: 1,
@@ -436,7 +530,7 @@ export const Globe = ({ className }: { className?: string }) => {
     return () => {
       globe.destroy();
     };
-  }, [glowColor,rotationSpeed]);
+  }, [glowColor, rotationSpeed]);
 
   return (
     <canvas
@@ -445,7 +539,7 @@ export const Globe = ({ className }: { className?: string }) => {
         rotationSpeed = 0.02; // Update rotation speed on hover
         // mapBrightness = 2; // Update map brightness on hover
         theta = theta; // Keep theta the same on hover
-        glowColor =[0.1, 0.8, 1]; // Change glow color on hover
+        glowColor = [0.1, 0.8, 1]; // Change glow color on hover
 
         // setRotationSpeed(0.03); // Increase rotation speed on hover
         // setMapBrightness(8); // Increase map brightness on hover
@@ -455,24 +549,26 @@ export const Globe = ({ className }: { className?: string }) => {
         rotationSpeed = 0.006; // Update rotation speed on hover
         // mapBrightness = 2; // Update map brightness on hover
         theta = theta; // Keep theta the same on hover
-        glowColor =[0.5, 0.5, 0.5]; // Change glow color on hover
+        glowColor = [0.5, 0.5, 0.5]; // Change glow color on hover
         // setRotationSpeed(0.005); // Reset rotation speed after hover
         // setMapBrightness(2); // Reset map brightness after hover
         // setGlowColor([0.5, 0.5, 0.5]); // Reset glow color after hover
       }}
       style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
-      className={className}
+      // className={className}
+      className={`w-80 h-80 xs:w-10 xs-h-10 sm:w-96 sm:h-96 md:w-128 md:h-128 lg:w-144 lg:h-144 xl:w-160 xl:h-160 ${className}`}
     />
   );
 };
-
 
 const items = [
   {
     title: "GymSpott Co-Founder",
     description: (
       <span className="text-sm">
-       Built a fitness social network app using React/React Native, Figma, Azure, GCP, SQL, and Python. Recommendation model increased friend requests by 100%
+        Built a fitness social network app using React/React Native, Figma,
+        Azure, GCP, SQL, and Python. Recommendation model increased friend
+        requests by 100%
       </span>
     ),
     header: <SkeletonFour />,
@@ -484,7 +580,8 @@ const items = [
     title: "Predicting Populations at MetroStar",
     description: (
       <span className="text-sm">
-        Created predictive population models for various U.S. cities with 99% accuracy 
+        Created predictive population models for various U.S. cities with 99%
+        accuracy
       </span>
     ),
     header: <SkeletonTwo />,
@@ -502,8 +599,7 @@ const items = [
   //   className: "md:col-span-1",
   //   icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
   // },
- 
- 
+
   {
     title: "COVID Simulation at Centivax",
     description: (
@@ -519,7 +615,8 @@ const items = [
     title: "AI Drones at Dep of Defense NSIN",
     description: (
       <span className="text-sm">
-        Developed AI model to analyze and interpred LiDAR data for drone assisted warfighter terrain navigation
+        Developed AI model to analyze and interpred LiDAR data for drone
+        assisted warfighter terrain navigation
       </span>
     ),
     header: <SkeletonOne />,
@@ -527,4 +624,3 @@ const items = [
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
 ];
-

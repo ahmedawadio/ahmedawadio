@@ -19,7 +19,7 @@ export const LampContainer = ({
  
     <div
       className={cn(
-        "relative flex min-h-screen -mt-20  flex-col items-center justify-center overflow-hidden bg-zinc-950 w-full rounded-md z-0",
+        "relative flex min-h-screen  flex-col items-center justify-center overflow-hidden bg-zinc-950 w-full rounded-md ",
         className
       )}
     >
@@ -27,7 +27,7 @@ export const LampContainer = ({
         Featured Project
         </h4>  */}
       
-      <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 ">
+      <div className="relative flex w-full flex-1  items-center justify-center isolate z-0 ">
       
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
