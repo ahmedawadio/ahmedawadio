@@ -132,7 +132,7 @@ export function ApolloProjectCard() {
 
 
               <FaUserAlt 
-                className="w-10 h-10 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md  " 
+                className="w-8 h-8 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md  " 
               />                
               </div>
         {/* Typewriter text */}          
