@@ -27,7 +27,7 @@ export default function ProjectsSection() {
 
 <div id="<=md" className="flex flex-col items-center justify-center gap-8 mx-auto max-w-7xl lg:hidden">
   {/* Show only on medium screens and below */}
-  <div className="whitespace-nowrap bg-gradient-to-br mb-4 from-slate-300 to-slate-500 bg-clip-text text-center text-6xl font-medium tracking-tight text-transparent md:text-7xl">
+<div className="bg-gradient-to-br mb-4 from-slate-300 to-slate-500 bg-clip-text text-center text-6xl font-medium tracking-tight text-transparent md:text-7xl px-8 md:px-2">
     Featured Projects
   </div>
 
