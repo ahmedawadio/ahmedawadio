@@ -48,16 +48,16 @@ export default function ProjectsSection() {
     Above Projects
 </div> */}
 
-<div key=">md" className="hidden lg:block">
+<div key=">md" className="hidden lg:block ">
 
-<div className="absolute whitespace-nowrap z-50 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center text-6xl font-medium tracking-tight text-transparent md:text-7xl">
-      Featured Projects 
-    </div>
+<h2 className="absolute whitespace-nowrap z-50 py-1 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center text-5xl font-medium tracking-tight text-transparent md:text-7xl">
+      Featured Projects
+    </h2>
   
   <div className="hidden md:grid">
 
   </div>
-        <LampContainer className="mt-1" >
+        <LampContainer className="mt-2" >
         <motion.div
           initial={{ opacity: 0.5, y: 200 }}
           whileInView={{ opacity: 1, y: -20 }}
