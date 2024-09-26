@@ -116,7 +116,7 @@ export function ApolloProjectCard() {
  
             
           <p className="font-semibold max-w-5xl mx-auto text-left tracking-tight from-slate-300 to-slate-500 text-xl  md:text-2xl md:leading-snug">
-         Apollo Clinic GPTs
+         Apollo Clinic GPT
           </p>
            <div className="my-5">
            <BackgroundGradient className="flex items-center  h-full">
@@ -155,7 +155,7 @@ export function ApolloProjectCard() {
 
           </div>
           
-          <a href="https://chat-demo-ashy-kappa.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <a href="https://apollo.ahmedawad.io/" target="_blank" rel="noopener noreferrer">
 
           <button className=" mt-8 mb-4 rounded-xl py-2 px-4 text-white flex items-center space-x-20 bg-zinc-700 text-[0.6rem]  text-sm font-bold dark:bg-zinc-800">
           View
@@ -185,7 +185,7 @@ export function ApolloProjectCard() {
    
               
             <p className="font-semibold max-w-5xl mx-auto text-left tracking-tight from-slate-300 to-slate-500 text-xl  md:text-2xl md:leading-snug">
-           No Place Like Home Model
+            Nest ML
             </p>
              <div className="my-5">
               {/* <TextGradient className=""/> */}
