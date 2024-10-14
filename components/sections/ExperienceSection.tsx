@@ -28,7 +28,7 @@ export default function ExperienceSection() {
         <div className="text-6xl  lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
           Experience
         </div>
-        <p className="text-lg  max-w-2xl  my-2 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+        <p className="text-lg  max-w-2xl  my-2 mx-auto text-center font-normal text-neutral-300">
           From software development, to machine learning and data science
           modeling
         </p>
@@ -77,35 +77,6 @@ const SkeletonOne = () => {
 
   return <EvervaultCard text="hover" />;
 
-  // return (
-  //   <motion.div
-  //     initial="initial"
-  //     whileHover="animate"
-  //     className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-  //   >
-  //     <motion.div
-  //       variants={variants}
-  //       className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-white dark:bg-black"
-  //     >
-  //       <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-  //       <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-  //     </motion.div>
-  //     <motion.div
-  //       variants={variantsSecond}
-  //       className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
-  //     >
-  //       <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-  //       <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-  //     </motion.div>
-  //     <motion.div
-  //       variants={variants}
-  //       className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-white dark:bg-black"
-  //     >
-  //       <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-  //       <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-  //     </motion.div>
-  //   </motion.div>
-  // );
 };
 const SkeletonTwo = () => {
   const variants = {
@@ -145,7 +116,7 @@ const SkeletonTwo = () => {
         initial={{ scale: 1, opacity: .8 }}
         animate={{ scale: 1, opacity: .8 }}
         whileHover={{ scale: 1.01, opacity: 1 }}
-        className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+        className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-col space-y-2"
       >
         <ResponsiveContainer width="100%" height="100%" >
 
@@ -206,25 +177,7 @@ const SkeletonTwo = () => {
   return( 
   <CustomChart/>
 )
-  // return (
-  //   <motion.div
-  //     initial="initial"
-  //     animate="animate"
-  //     whileHover="hover"
-  //     className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-  //   >
-  //     {arr.map((_, i) => (
-  //       <motion.div
-  //         key={"skelenton-two" + i}
-  //         variants={variants}
-  //         style={{
-  //           maxWidth: Math.random() * (100 - 40) + 40 + "%",
-  //         }}
-  //         className="flex flex-row rounded-full border dark:border-white/[0.2] p-2  items-center space-x-2 bg-neutral-950 w-full h-4"
-  //       ></motion.div>
-  //     ))}
-  //   </motion.div>
-  // );
+  
 };
 const SkeletonThree = () => {
   const variants = {
@@ -245,7 +198,7 @@ const SkeletonThree = () => {
         repeat: Infinity,
         repeatType: "reverse",
       }}
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2] rounded-lg flex-col space-y-2"
       style={{
         background:
           "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
@@ -282,11 +235,11 @@ const SkeletonFour = () => {
       initial="initial"
       animate="animate"
       whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
+      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2"
     >
       <motion.div
         variants={first}
-        className="h-full w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center"
       >
         {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
@@ -305,14 +258,11 @@ const SkeletonFour = () => {
         <p className="  sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Mobile/Web App
         </p>
-        {/* <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          React Native
-        </p> */}
-        {/* <Badge variant="secondary" className="mt-4">React Native </Badge> */}
+        
       </motion.div>
       <motion.div
         variants={first}
-        className="h-full relative z-20 w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full relative z-20 w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center"
       >
         {/* <Image
           src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"
@@ -329,15 +279,11 @@ const SkeletonFour = () => {
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           ML Model
         </p>
-        {/*  */}
-        {/* <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Machine Learning
-        </p> */}
-        {/* <Badge variant="secondary" className="mt-4">Full Stack</Badge> */}
+     
       </motion.div>
       <motion.div
         variants={second}
-        className="h-full w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border b flex flex-col items-center justify-center"
       >
         <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <FiServer className="h-full w-full" />
@@ -346,13 +292,11 @@ const SkeletonFour = () => {
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Backend
         </p>
-        {/* <p className=x"border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Azure/GCP
-        </p> */}
+       
       </motion.div>
       <motion.div
         variants={second}
-        className="h-full w-1/4 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border  flex flex-col items-center justify-center"
       >
         <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <LuLayoutDashboard className="h-full w-full" />
@@ -360,9 +304,7 @@ const SkeletonFour = () => {
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Dashboard
         </p>
-        {/* <p className="border border-blue-500 bg-blue-100 dark:bg-orange-900/20 text-blue-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Analytics
-        </p> */}
+       
       </motion.div>
     </motion.div>
   );
@@ -397,7 +339,7 @@ const SkeletonFive = () => {
     <motion.div
       initial="initial"
       whileHover="animate"
-      className="flex overflow-hidden sm:aspect-video  xs:aspect-video flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+      className="flex overflow-hidden sm:aspect-video  xs:aspect-video flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2] flex-col space-y-2"
     >
       <div className="flex items-center justify-center">
         <Globe className="" />
