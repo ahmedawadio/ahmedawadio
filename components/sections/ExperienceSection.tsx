@@ -259,7 +259,7 @@ const SkeletonFour = () => {
       key={isMobile ? 'mobile' : 'desktop'} //doing this forces remount because key changes when window width changes
       animate="animate"
       whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2 justify-center"
+      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2 justify-evenly"
     >
       <motion.div
         variants={first}
@@ -267,7 +267,7 @@ const SkeletonFour = () => {
       >
       
 
-        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <MdDevices className="h-full w-full" />
         </div>
 
@@ -283,7 +283,7 @@ const SkeletonFour = () => {
       >
     
 
-        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <FiCheckCircle className="h-full w-full" />
         </div>
 
@@ -296,7 +296,7 @@ const SkeletonFour = () => {
         variants={second}
         className="h-full w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border b flex flex-col items-center justify-center"
       >
-        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <FiServer className="h-full w-full" />
         </div>
 
@@ -310,7 +310,7 @@ const SkeletonFour = () => {
         variants={second}
         className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center hidden sm:flex"
         >
-        <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <LuLayoutDashboard className="h-full w-full" />
         </div>
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
