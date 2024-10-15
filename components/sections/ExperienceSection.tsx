@@ -231,7 +231,7 @@ const SkeletonFour = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
 
   const first = {
     initial: {
@@ -259,7 +259,7 @@ const SkeletonFour = () => {
       key={isMobile ? 'mobile' : 'desktop'} //doing this forces remount because key changes when window width changes
       animate="animate"
       whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2"
+      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2 justify-center"
     >
       <motion.div
         variants={first}
@@ -272,7 +272,7 @@ const SkeletonFour = () => {
         </div>
 
         <p className="  sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Mobile/Web App
+          Apps
         </p>
      
       </motion.div>
@@ -290,11 +290,7 @@ const SkeletonFour = () => {
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           ML Model
         </p>
-        {/*  */}
-        {/* <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Machine Learning
-        </p> */}
-        {/* <Badge variant="secondary" className="mt-4">Full Stack</Badge> */}
+        
       </motion.div>
       <motion.div
         variants={second}
@@ -307,13 +303,12 @@ const SkeletonFour = () => {
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Backend
         </p>
-        {/* <p className=x"border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Azure/GCP
-        </p> */}
+        
       </motion.div>
+    
       <motion.div
         variants={second}
-        className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border  flex flex-col items-center justify-center"
+        className=" hidden xs:block h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border  flex-col items-center justify-center"
       >
         <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <LuLayoutDashboard className="h-full w-full" />
@@ -321,10 +316,9 @@ const SkeletonFour = () => {
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Dashboard
         </p>
-        {/* <p className="border border-blue-500 bg-blue-100 dark:bg-orange-900/20 text-blue-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Analytics
-        </p> */}
+  
       </motion.div>
+      
     </motion.div>
   );
 };
