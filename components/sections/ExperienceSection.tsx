@@ -308,8 +308,8 @@ const SkeletonFour = () => {
     
       <motion.div
         variants={second}
-        className=" hidden xs:block h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border  flex-col items-center justify-center"
-      >
+        className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center hidden sm:flex"
+        >
         <div className="h-10 w-10  sm:h-12 sm:w-12 md:h-16 md:w-16">
           <LuLayoutDashboard className="h-full w-full" />
         </div>
