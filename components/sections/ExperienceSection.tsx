@@ -16,14 +16,31 @@ import { MdDevices } from "react-icons/md";
 import { FiCheckCircle } from "react-icons/fi";
 import { FiServer } from "react-icons/fi";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { CiServer } from "react-icons/ci";
 import { EvervaultCard } from "../ui/evervault-card";
 import { Badge } from "../ui/badge";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Area, ResponsiveContainer } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Area,
+  ResponsiveContainer,
+} from "recharts";
+import { IoInfiniteOutline } from "react-icons/io5";
+import { IoCodeSharp } from "react-icons/io5";
+
+import { LuDatabase } from "react-icons/lu";
 
 
 export default function ExperienceSection() {
   return (
-    <div id="experience" className="relative z-20 py-10 lg:py-10 max-w-8xl mx-auto">
+    <div
+      id="experience"
+      className="relative z-20 py-10 lg:py-10 max-w-8xl mx-auto"
+    >
       <div className="px-8">
         <div className="text-6xl  lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-transparent">
           Experience
@@ -76,7 +93,111 @@ const SkeletonOne = () => {
   };
 
   return <EvervaultCard text="hover" />;
+};
 
+const SkeletonChipedin = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      console.log("width:", window.innerWidth, { isMobile: mobile });
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const first = {
+    initial: {
+      x: isMobile ? 0 : 20,
+      rotate: isMobile ? 0 : -5,
+    },
+    hover: {
+      x: 0,
+      rotate: 0,
+    },
+  };
+  const second = {
+    initial: {
+      x: isMobile ? 0 : -20,
+      rotate: isMobile ? 0 : 5,
+    },
+    hover: {
+      x: 0,
+      rotate: 0,
+    },
+  };
+  return (
+    <motion.div
+      initial="initial"
+      key={isMobile ? "mobile" : "desktop"} //doing this forces remount because key changes when window width changes
+      animate="animate"
+      whileHover="hover"
+      className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2 justify-evenly"
+    >
+    
+
+      <motion.div
+        variants={first}
+        className="h-full relative z-20 w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center"
+      >
+        <div className="h-8 w-8  sm:h-10 sm:w-10 md:h-14 md:w-14">
+          <LuDatabase className="h-full w-full" />
+        </div>
+
+        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+          Database
+        </p>
+      </motion.div>
+      <motion.div
+        variants={second}
+        className="h-full w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border b flex flex-col items-center justify-center"
+      >
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <IoInfiniteOutline className="h-full w-full" />
+        </div>
+
+        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+          CI/CD
+        </p>
+      </motion.div>
+
+      <motion.div
+        variants={second}
+        className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center hidden sm:flex"
+      >
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <CiServer className="h-full w-full" />
+        </div>
+        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+          Web Server
+        </p>
+      </motion.div>
+
+      <motion.div
+        variants={second}
+        className="h-full relative z-20 w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center"
+      >
+        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
+          <IoCodeSharp className="h-full w-full" />
+        </div>
+
+        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+          Full Stack
+        </p>
+      </motion.div>
+    </motion.div>
+  );
 };
 const SkeletonTwo = () => {
   const variants = {
@@ -100,84 +221,115 @@ const SkeletonTwo = () => {
 
   const CustomChart = () => {
     const data = [
-      { name: '1', uv: 1000, guess: null, confidenceLow: null, confidenceHigh: null },
-      { name: '2', uv: 2200, guess: null, confidenceLow: null, confidenceHigh: null },
-      { name: '3', uv: 2800, guess: null, confidenceLow: null, confidenceHigh: null },
-      { name: '4', uv: 3800, guess: 3800, confidenceLow: 3800 * 1, confidenceHigh: 3800 * 1 }, 
-      { name: '5', uv: null, guess: 4000, confidenceLow: 4000 * .8, confidenceHigh: 4000 * 1.2 },
-      { name: '6', uv: null, guess: 4800, confidenceLow: 4800 * .7, confidenceHigh: 4800 * 1.3 },
-      { name: '7', uv: null, guess: 5500, confidenceLow: 5500 * .6, confidenceHigh: 5500 * 1.4 },
-
-    
+      {
+        name: "1",
+        uv: 1000,
+        guess: null,
+        confidenceLow: null,
+        confidenceHigh: null,
+      },
+      {
+        name: "2",
+        uv: 2200,
+        guess: null,
+        confidenceLow: null,
+        confidenceHigh: null,
+      },
+      {
+        name: "3",
+        uv: 2800,
+        guess: null,
+        confidenceLow: null,
+        confidenceHigh: null,
+      },
+      {
+        name: "4",
+        uv: 3800,
+        guess: 3800,
+        confidenceLow: 3800 * 1,
+        confidenceHigh: 3800 * 1,
+      },
+      {
+        name: "5",
+        uv: null,
+        guess: 4000,
+        confidenceLow: 4000 * 0.8,
+        confidenceHigh: 4000 * 1.2,
+      },
+      {
+        name: "6",
+        uv: null,
+        guess: 4800,
+        confidenceLow: 4800 * 0.7,
+        confidenceHigh: 4800 * 1.3,
+      },
+      {
+        name: "7",
+        uv: null,
+        guess: 5500,
+        confidenceLow: 5500 * 0.6,
+        confidenceHigh: 5500 * 1.4,
+      },
     ];
-  
+
     return (
       <motion.div
-        initial={{ scale: 1, opacity: .8 }}
-        animate={{ scale: 1, opacity: .8 }}
+        initial={{ scale: 1, opacity: 0.8 }}
+        animate={{ scale: 1, opacity: 0.8 }}
         whileHover={{ scale: 1.01, opacity: 1 }}
         className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-col space-y-2"
       >
-        <ResponsiveContainer width="100%" height="100%" >
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart width={400} height={200} data={data}>
+            {/* Confidence Interval Area */}
+            <Line
+              type="monotone"
+              dataKey="confidenceLow"
+              dot={false}
+              strokeWidth={2}
+              strokeDasharray="5 5" // Creates the dashed effect
 
-        <LineChart width={400} height={200} data={data}>
-          {/* Confidence Interval Area */}
-          <Line
-            type="monotone"
-            dataKey="confidenceLow"
-            dot={false}
-            strokeWidth={2}
-            strokeDasharray="5 5"  // Creates the dashed effect
+              // whileHover={() => console.log("hover")}
+              // onHover={() => console.log("hover")}
+              // stroke="none"
+              // fill="rgba(99, 255, 132, 0.2)"  // Light color for confidence shading
+            />
+            <Line
+              type="monotone"
+              dataKey="confidenceHigh"
+              dot={false}
+              strokeWidth={2}
+              strokeDasharray="5 5" // Creates the dashed effect
 
-            
-            // whileHover={() => console.log("hover")}
-            // onHover={() => console.log("hover")}
-            // stroke="none"
-            // fill="rgba(99, 255, 132, 0.2)"  // Light color for confidence shading
+              // stroke="none"
+              // fill="rgba(99, 255, 132, 0.2)"  // Same color as confidenceLow for uniform shading
             />
-          <Line
-            type="monotone"
-            dataKey="confidenceHigh"
-            dot={false}
-            strokeWidth={2}
-            strokeDasharray="5 5"  // Creates the dashed effect
 
-            // stroke="none"
-            // fill="rgba(99, 255, 132, 0.2)"  // Same color as confidenceLow for uniform shading
+            {/* Dashed "Guess" Line */}
+            <Line
+              type="monotone"
+              dataKey="guess"
+              stroke="white"
+              strokeWidth={2}
+              strokeDasharray="5 5" // Creates the dashed effect
+              dot={false}
             />
-  
-          {/* Dashed "Guess" Line */}
-          <Line
-            type="monotone"
-            dataKey="guess"
-            stroke="white"
-            strokeWidth={2}
-            strokeDasharray="5 5"  // Creates the dashed effect
-            dot={false}
+
+            {/* Solid Line for UV (Actual Data) */}
+            <Line
+              type="monotone"
+              dataKey="uv"
+              stroke="white"
+              strokeWidth={2}
+              dot={false}
             />
-  
-          {/* Solid Line for UV (Actual Data) */}
-          <Line
-            type="monotone"
-            dataKey="uv"
-            stroke="white"
-            strokeWidth={2}
-            dot={false}
-            />
-        </LineChart>
-            </ResponsiveContainer>
+          </LineChart>
+        </ResponsiveContainer>
       </motion.div>
     );
   };
-  
-  
-  
-  
-    
-  return( 
-  <CustomChart/>
-)
-  
+
+  return <CustomChart />;
 };
 const SkeletonThree = () => {
   const variants = {
@@ -210,7 +362,6 @@ const SkeletonThree = () => {
   );
 };
 const SkeletonFour = () => {
-
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -219,19 +370,18 @@ const SkeletonFour = () => {
       setIsMobile(mobile);
       console.log("width:", window.innerWidth, { isMobile: mobile });
     };
-  
+
     // Set initial state
     handleResize();
-  
+
     // Add event listener
     window.addEventListener("resize", handleResize);
-  
+
     // Remove event listener on cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
 
   const first = {
     initial: {
@@ -246,7 +396,7 @@ const SkeletonFour = () => {
   const second = {
     initial: {
       x: isMobile ? 0 : -20,
-      rotate:isMobile ? 0 :  5,
+      rotate: isMobile ? 0 : 5,
     },
     hover: {
       x: 0,
@@ -256,7 +406,7 @@ const SkeletonFour = () => {
   return (
     <motion.div
       initial="initial"
-      key={isMobile ? 'mobile' : 'desktop'} //doing this forces remount because key changes when window width changes
+      key={isMobile ? "mobile" : "desktop"} //doing this forces remount because key changes when window width changes
       animate="animate"
       whileHover="hover"
       className="flex flex-1 w-full h-full min-h-[6rem] bg-dot-white/[0.2]  flex-row space-x-2 justify-evenly"
@@ -265,48 +415,40 @@ const SkeletonFour = () => {
         variants={first}
         className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center"
       >
-      
-
-        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
+        <div className="h-8 w-8  sm:h-10 sm:w-10 md:h-14 md:w-14">
           <MdDevices className="h-full w-full" />
         </div>
 
         <p className="  sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Apps
         </p>
-     
       </motion.div>
       <motion.div
         variants={first}
-        
         className="h-full relative z-20 w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center"
       >
-    
-
-        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
-          <FiCheckCircle className="h-full w-full" />
+        <div className="h-8 w-8  sm:h-10 sm:w-10 md:h-14 md:w-14">
+        <FiCheckCircle className="h-full w-full" />
         </div>
 
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           ML Model
         </p>
-        
       </motion.div>
       <motion.div
         variants={second}
         className="h-full w-1/4 rounded-2xl  p-4 bg-black border-white/[0.1] border b flex flex-col items-center justify-center"
       >
-        <div className="h-9 w-9  sm:h-12 sm:w-12 md:h-16 md:w-16">
-          <FiServer className="h-full w-full" />
+        <div className="h-8 w-8  sm:h-10 sm:w-10 md:h-14 md:w-14">
+        <FiServer className="h-full w-full" />
         </div>
 
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Backend
         </p>
-        
       </motion.div>
-    
-      <motion.div
+
+      {/* <motion.div
         variants={second}
         className="h-full w-1/4 rounded-2xl p-4 bg-black border-white/[0.1] border flex flex-col items-center justify-center hidden sm:flex"
         >
@@ -317,12 +459,10 @@ const SkeletonFour = () => {
           Dashboard
         </p>
   
-      </motion.div>
-      
+      </motion.div> */}
     </motion.div>
   );
 };
-
 
 const SkeletonFive = () => {
   const variants = {
@@ -520,19 +660,15 @@ export const Globe = ({ className }: { className?: string }) => {
 
 const items = [
   {
-    title: "GymSpott Co-Founder",
+    title: "Lead Software Engineer at ChipedIn",
     description: (
       <span className="text-sm">
-        Built a fitness social network app using React/React Native, Figma,
-        Azure, GCP, SQL, and Python. Recommendation model increased friend
-        requests by 100%
-      </span>
+Led full-stack migration from external to in-house infrastructure, new rebrand UI/UX implementation in Vue.js, and built robust CI/CD pipeline with Docker and Github Actions      </span>
     ),
-    header: <SkeletonFour />,
+    header: <SkeletonChipedin />,
     className: "md:col-span-2",
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
-
   {
     title: "Predicting Populations at MetroStar",
     description: (
@@ -545,6 +681,7 @@ const items = [
     className: "md:col-span-s",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
+
   // {
   //   title: "AI Drone Work at Dep of Defense NSIN",
   //   description: (
@@ -569,6 +706,19 @@ const items = [
     icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
   },
   {
+    title: "GymSpott Co-Founder",
+    description: (
+      <span className="text-sm">
+        Built a fitness social network app using React/React Native, Figma,
+        Azure, GCP, SQL, and Python. Recommendation model increased friend
+        requests by 100%
+      </span>
+    ),
+    header: <SkeletonFour />,
+    className: "md:col-span-1",
+    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+  },
+  {
     title: "AI Drones at Dep of Defense NSIN",
     description: (
       <span className="text-sm">
@@ -577,7 +727,7 @@ const items = [
       </span>
     ),
     header: <SkeletonOne />,
-    className: "md:col-span-2",
+    className: "md:col-span-1",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
 ];
