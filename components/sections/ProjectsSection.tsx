@@ -18,6 +18,7 @@ import { CgHome } from "react-icons/cg";
 import { GoHomeFill } from "react-icons/go";
 import { FaUser } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 
 export default function ProjectsSection() {
   return (
@@ -33,10 +34,9 @@ export default function ProjectsSection() {
           Featured Projects
         </div>
 
-
-
         {/* The project cards */}
         <div className="flex flex-col gap-4 w-full items-center">
+          <BriefMeProjectCard />
           <HomeProjectCard />
           <ApolloProjectCard />
         </div>
@@ -65,9 +65,10 @@ export default function ProjectsSection() {
             */}
             <BentoGrid
               className={cn(
-                "grid auto-rows-[18rem] grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto"
+                "grid auto-rows-[18rem] grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto"
               )}
             >
+              <BriefMeProjectCard />
               <HomeProjectCard />
               <ApolloProjectCard />
             </BentoGrid>
@@ -79,23 +80,6 @@ export default function ProjectsSection() {
 }
 
 export function ApolloProjectCard() {
-  const words = [
-    {
-      text: "How",
-    },
-    {
-      text: "much",
-    },
-    {
-      text: "is",
-    },
-    {
-      text: "my",
-    },
-    {
-      text: "copay?",
-    },
-  ];
   return (
     <div>
       <div className="rounded-[22px] border-neutral-900 border max-w-lg px-10 py-5 bg-[rgba(0,0,0,0.3)] backdrop-blur-sm">
@@ -103,23 +87,11 @@ export function ApolloProjectCard() {
           Apollo Clinic GPT
         </p>
         <div className="my-5">
-          <BackgroundGradient className="flex items-center  h-full">
-            {/* Avatar on the left */}
-            {/* <Avatar className="w-14 h-14 m-1  ">
-          <AvatarImage src="/Profile_Image.png" alt="Profile Image" />
-          <AvatarFallback></AvatarFallback>
-        </Avatar>
-         */}
-
-            <div className="w-14 h-14 m-1 flex justify-center items-center">
-              <FaUserAlt className="w-8 h-8 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md  " />
+          <BackgroundGradient className="flex items-center h-full">
+            <div className="w-10 h-10 m-1 flex justify-center items-center">
+              <FaUserAlt className="w-6 h-6 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md" />
             </div>
-            {/* Typewriter text */}
-
-            <TypewriterEffectSmooth
-              className="items-center flex justify-center"
-              words={words}
-            />
+            <div className="text-base font-bold">How much is my copay?</div>
           </BackgroundGradient>
         </div>
 
@@ -144,6 +116,9 @@ export function ApolloProjectCard() {
           </Badge>
           <Badge variant="outline" className="mt-4">
             React
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            Serverless
           </Badge>
         </div>
 
@@ -189,14 +164,14 @@ export function HomeProjectCard() {
         <div className="my-5">
           {/* <TextGradient className=""/> */}
 
-          <BackgroundGradient className="flex items-center  ">
+          <BackgroundGradient className="flex items-center">
             {/* <BouncingHeels/> */}
 
-            <div className="w-14 h-14 m-1 flex justify-center items-center">
-              <GoHomeFill className="w-10 h-10 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md rounded-full " />
+            <div className="w-10 h-10 m-1 flex justify-center items-center">
+              <GoHomeFill className="w-6 h-6 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md rounded-full" />
             </div>
 
-            <div className=" sm:text-lg md:text-xl lg:text-xl font-bold text-start">
+            <div className="text-base font-bold">
               There&apos;s no place like home
             </div>
           </BackgroundGradient>
@@ -218,11 +193,12 @@ export function HomeProjectCard() {
           <Badge variant="outline" className="mt-4">
             Full Stack
           </Badge>
-          <Badge variant="outline" className="mt-4">
-            Serverless
-          </Badge>
+
           <Badge variant="outline" className="mt-4">
             Databases
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            Dimensionality Reduction
           </Badge>
         </div>
         <div className="flex  space-x-4 my-2">
@@ -253,6 +229,79 @@ export function HomeProjectCard() {
   
               Featured Project
             </p> */}
+    </div>
+  );
+}
+
+export function BriefMeProjectCard() {
+  return (
+    <div>
+      <div className="rounded-[22px] border-neutral-900 border max-w-lg px-10 py-5 bg-[rgba(0,0,0,0.3)] backdrop-blur-sm">
+        <p className="font-semibold max-w-5xl mx-auto text-left tracking-tight from-slate-300 to-slate-500 text-xl  md:text-2xl md:leading-snug">
+          Brief Me
+        </p>
+        <div className="my-5">
+          <BackgroundGradient className="flex items-center h-full">
+            <div className="w-10 h-10 m-1 flex justify-center items-center">
+              <FaFileAlt className="w-6 h-6 text-black opacity-70 bg-[rgba(255, 255, 255, 0.2)] backdrop-blur-md" />
+            </div>
+            <div className="text-base font-bold">Your notes, summarized.</div>
+          </BackgroundGradient>
+        </div>
+
+        <p className="text-sm text-neutral-400">
+          A full-stack document summarization platform where users upload large
+          text files and receive intelligent, AI-generated summaries. Leverages
+          OpenAI models with advanced chunking, embedding, and retrieval
+          techniques for long documents.
+        </p>
+        <div>
+          <Badge variant="outline" className="mt-4">
+            Full Stack
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            AI/ML
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            tRPC
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            Next.js
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            OpenAI
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            Embeddings
+          </Badge>
+          <Badge variant="outline" className="mt-4">
+            Supabase
+          </Badge>
+        </div>
+
+        <div className="flex space-x-4 my-2">
+          <a
+            href="https://www.loom.com/share/c5287f31795e4b6bbc854b551377159a?sid=4fab83d8-797a-4ddc-b6fb-46bc229702ff"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="mt-8 mb-4 rounded-xl py-2 px-4 text-white flex items-center space-x-20 text-[0.6rem] text-sm font-bold bg-zinc-800">
+              View Demo
+              <MdArrowOutward className="ml-2" size={18} />
+            </button>
+          </a>
+          <a
+            href="https://github.com/ahmedawadio/BriefMe-Project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="mt-8 mb-4 rounded-xl py-2 px-4 text-white flex items-center space-x-20 bg-zinc-900 text-[0.6rem] text-sm font-bold">
+              Github
+              <IoLogoGithub className="ml-2" size={18} />
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
